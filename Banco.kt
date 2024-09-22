@@ -38,45 +38,80 @@ fun inicio() {
 }
 
 var saldo = 0.0
-fun saldo() {
-
-    println(saldo)
+fun saldo()
+{
+    println(" seu saldo atual é R$$saldo")
+    inicio()
 }
 
-    fun extrato() {
-        //Adicionar a opção para ver o extrato (Coloque algumas compras ou depósitos fictícios).
-        println(" Deposito:R$1000 \n Deposito:R$2000 \n Compra:R$100 \n Tranferencia:R$900 \n Compra:1500 \n Compra:50 \n Compra:R$450")
+fun extrato()
+{
+    //Adicionar a opção para ver o extrato (Coloque algumas compras ou depósitos fictícios).
+    println(" Deposito:R$1000 \n" +
+            " Deposito:R$2000 \n" +
+            " Compra:R$100 \n" +
+            " Tranferencia:R$900 \n" +
+            " Compra:1500 \n" +
+            " Compra:50 \n" +
+            " Compra:R$450")
+inicio()
+}
 
-
-    }
 var sacar=0.0
-    fun sacar() {
-        /*Sempre que o usuário for sacar dinheiro, o valor restante não pode ser negativo, ou seja, caso o usuário tente sacar mais
-        do que tem em saldo, a ação não deve ocorrer. Exiba uma mensagem de "Operação não autorizada".
-        */
-println("Quantos você deseja sacar do saldo $saldo ?")
+fun sacar() {
+    /*Sempre que o usuário for sacar dinheiro, o valor restante não pode ser negativo, ou seja, caso o usuário tente sacar mais
+    do que tem em saldo, a ação não deve ocorrer. Exiba uma mensagem de "Operação não autorizada".
+    */
+    println("Quantos você deseja sacar do seu saldo R$$saldo ?")
+    sacar= readln().toDoubleOrNull()!!
 
-        sacar=saldo-sacar
+    if (sacar <= saldo) {
+       saldo-=sacar
+        println("Saque realizado com sucesso! \n Saldou atual:R$$sacar")
     }
+    else
+    {
+        println("Saque invalido! \n Saldo insuficiente para saque")
+    }
+inicio()
+
+}
 
 var depositar:Double = 0.0
 fun depositar() {
 
-        println("Quantos você deseja depositar")
-        depositar= readln().toDouble()
-        println("O valor atual é $depositar")
-        depositar=depositar+saldo
+    println("Quantos você deseja depositar")
+    depositar= readln().toDoubleOrNull()!!
+
+    if (depositar !=null) {
+        saldo +=depositar
+        println("Deposito concluído! \nO valor atual é R$$saldo")
     }
-
-    fun transferir() {
-
+    else
+    {
+        println("Operação invalída!")
     }
+    inicio()
+}
+var transferir:Double = 0.0
+fun transferir() {
 
-    fun sair() {
+    println("Quantos você deseja tranferir do seu saldo:R$$saldo ?")
+    transferir=readln().toDouble()
 
-        println("Foi um prazer te-lô por aqui, volte sempre!")
-    }
+    if(transferir <=saldo)
+    println("Você transferiu R$$transferir ")
+   saldo -=transferir
+    println("Seu saldo atual é: R$$saldo")
+    inicio()
 
-    fun erro() {
-        inicio()
-    }
+}
+
+fun sair() {
+
+    println("Foi um prazer te-lô por aqui, volte sempre!")
+}
+
+fun erro() {
+    inicio()
+}
