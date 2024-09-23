@@ -7,6 +7,15 @@ fun main() {
 
     println("É um prazer te-lô por aqui $nome")
 
+    println("A sua senha é (1234) \nInforme a sua senha ?")
+    var senha = readln().toInt()
+
+    do
+    {
+        println("Senha errada! \nDigite novamente:")
+        senha = readln().toInt()
+    }while (senha != 1234 )
+
     //Na função "inicio", utilize escolha/caso (switch/case) para validar a opção escolhida pelo usuário.
     inicio()
 }
